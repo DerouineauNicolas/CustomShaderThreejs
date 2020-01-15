@@ -49,7 +49,7 @@ scene.add(cube);
 
 var animate = function () {
     requestAnimationFrame(animate);
-    time += 0.001;
+    time += 0.1;
     uniforms.iResolution.value.set(window.innerWidth, window.innerHeight, 1);
     uniforms.iTime.value = time;
     renderer.render(scene, camera);

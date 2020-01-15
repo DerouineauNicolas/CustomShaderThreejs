@@ -99,13 +99,14 @@ void main()
 {
     float t = 0.5 * iTime;
     vec2 uv = 2.0 * (gl_FragCoord.xy - 0.5 * iResolution.xy) / iResolution.y;
+    uv = vUv;
     float eps = 2.0 / iResolution.y;
 
     // Scene parameters;
     vec3 base = vec3(0.95, 0.7, 0.2);
     const float count = 8.0;
 
-    Gear outer = Gear(0.0, 0.8, 0.08, 4.0, 32.0, 0.9, base);
+    Gear outer = Gear(255.0, 0.8, 0.08, 4.0, 32.0, 0.9, base);
     Gear inner = Gear(0.0, 0.4, 0.08, 4.0, 16.0, 0.3, base);
 
 
