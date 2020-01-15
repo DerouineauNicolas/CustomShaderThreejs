@@ -18,6 +18,7 @@ controls.maxDistance = 80;
 
 camera.position.z = -38;
 camera.position.y = 14;
+var time = 0;
 controls.update();
 
 // Instantiate a loader
@@ -33,7 +34,9 @@ var uniforms = {
     u_resolution: { value: new THREE.Vector2() },
     u_mouse: { value: new THREE.Vector2() },
     u_mixRatio: { value: 0.0 },
-    u_helmet_texture: { value: null }
+    u_helmet_texture: { value: null },
+    iTime: { value: 0 },
+    iResolution: { value: new THREE.Vector3() },
 };
 var material = new THREE.ShaderMaterial({
     uniforms: uniforms,
@@ -46,10 +49,9 @@ scene.add(cube);
 
 var animate = function () {
     requestAnimationFrame(animate);
-    var delta = clock.getDelta();
-    if (mixer != null) {
-        mixer.update(delta);
-    };
+    time += 0.001;
+    uniforms.iResolution.value.set(window.innerWidth, window.innerHeight, 1);
+    uniforms.iTime.value = time;
     renderer.render(scene, camera);
 };
 
