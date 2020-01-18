@@ -29,7 +29,14 @@ var clock = new THREE.Clock();
 var light = new THREE.AmbientLight(0x404040);
 scene.add(light);
 
-var geometry = new THREE.BoxGeometry(1, 1, 1);
+var geometry = new THREE.BoxGeometry(10, 10, 10);
+
+for (var i = 0; i < 12; i += 2) {
+    geometry.faceVertexUvs[0][i] = [new THREE.Vector2(-1, 1.0), new THREE.Vector2(-1, -1), new THREE.Vector2(1.0, 1.0)];
+    geometry.faceVertexUvs[0][i + 1] = [new THREE.Vector2(1.0, -1.0), new THREE.Vector2(1.0, 1.0), new THREE.Vector2(-1, 1.0)];
+}
+geometry.uvsNeedUpdate = true;
+
 var uniforms = {
     u_resolution: { value: new THREE.Vector2() },
     u_mouse: { value: new THREE.Vector2() },
